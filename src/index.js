@@ -1,13 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Layout from "./Components/Layout";
+
+import Given from "./Components/About";
+
+import SignUp from "./Components/SignUp";
+import Customer from "./Components/Customer";
+import Taken from "./Components/Taken";
+import User from "./Components/Users";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "given",
+        element: <Given />,
+      },
+      {
+        path: "customer",
+        element: <Customer />,
+      },
+
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "user",
+        element: <User />,
+      },
+      {
+        path: "taken",
+        element: <Taken />,
+      },
+    ],
+  },
+]);
 root.render(
   <React.StrictMode>
-    <App />
+    <div className="overflow-hidden">
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>
 );
 
